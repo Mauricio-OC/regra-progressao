@@ -39,8 +39,9 @@ public class App {
       System.out.println("Parabéns! Você alcançou " + resultado
           + ".0%! Temos o prazer de informar que você obteve aprovação!");
     } else {
-      System.out.println("Lamentamos informar que, com base na sua pontuação alcançada neste período, " +
-          resultado + ".0%, você não atingiu a pontuação mínima necessária para sua aprovação.");
+      System.out.println(
+          "Lamentamos informar que, com base na sua pontuação alcançada neste período, " + resultado
+              + ".0%, você não atingiu a pontuação mínima necessária para sua aprovação.");
     }
 
     scanner.close();
