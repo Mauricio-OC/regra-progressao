@@ -37,7 +37,7 @@ public class App {
 
     if (resultado >= 85) {
       System.out.println("Parabéns! Você alcançou " + resultado
-          + ".0%! Temos o prazer de informar que você obteve aprovação!");
+          + ".0%! E Temos o prazer de informar que você obteve aprovação!");
     } else {
       System.out.println(
           "Lamentamos informar que, com base na sua pontuação alcançada neste período, " + resultado
