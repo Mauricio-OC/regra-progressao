@@ -14,56 +14,35 @@ public class App {
     Scanner scanner = new Scanner(System.in);
 
     System.out.print("Digite a quantidade de atividades para cadastrar: ");
-    int quantidadeAtividades = scanner.nextInt();
-    scanner.nextLine();
+    int quantidade = Integer.parseInt(scanner.nextLine());
 
-    String[] nomesAtividades = new String[quantidadeAtividades];
-    double[] pesosAtividades = new double[quantidadeAtividades];
-    double[] notasAtividades = new double[quantidadeAtividades];
+    int peso = 0;
+    int nota = 0;
 
-    double somaPesos = 0;
+    for (int i = 1; i <= quantidade; i++) {
+      System.out.print("Digite o nome da atividade " + i + ": ");
+      String nomeDaAtividade = scanner.nextLine();
 
-    for (int i = 0; i < quantidadeAtividades; i++) {
-      System.out.print("Digite o nome da atividade " + (i + 1) + ": ");
-      nomesAtividades[i] = scanner.nextLine();
+      System.out.print("Digite o peso da atividade " + i + ": ");
+      int pesoDaAtividade = Integer.parseInt(scanner.nextLine());
+      peso += pesoDaAtividade;
 
-      System.out.print("Digite o peso da atividade " + (i + 1) + ": ");
-      pesosAtividades[i] = scanner.nextDouble();
-      somaPesos += pesosAtividades[i];
+      System.out.print("Digite a nota obtida para " + nomeDaAtividade + ": ");
+      int notaAtividade = Integer.parseInt(scanner.nextLine());
 
-      scanner.nextLine();
-
-      System.out.print("Digite a nota obtida para " + nomesAtividades[i] + ": ");
-      notasAtividades[i] = scanner.nextDouble();
-
-      scanner.nextLine();
+      nota += (pesoDaAtividade * notaAtividade);
     }
 
-    if (somaPesos != 100) {
-      System.out.println("A soma dos pesos das atividades não é igual a 100%. Por favor, corrija.");
-      return;
-    }
+    int resultado = nota / peso;
 
-    double notaFinal = calcularNotaFinal(pesosAtividades, notasAtividades);
-
-    System.out.println("Sua nota final é: " + notaFinal);
-
-    if (notaFinal >= 85) {
-      System.out.println("Parabéns! Você alcançou " + notaFinal + ".0%! Temos o prazer de informar que você obteve aprovação!");
+    if (resultado >= 85) {
+      System.out.println("Parabéns! Você alcançou " + resultado
+          + ".0%! Temos o prazer de informar que você obteve aprovação!");
     } else {
-      System.out.println("Lamentamos informar que, com base na sua pontuação alcançada neste período, " + notaFinal + "%, você não atingiu a pontuação mínima necessária para sua aprovação.");
+      System.out.println("Lamentamos informar que, com base na sua pontuação alcançada neste período, " +
+          resultado + ".0%, você não atingiu a pontuação mínima necessária para sua aprovação.");
     }
 
     scanner.close();
-  }
-
-  public static double calcularNotaFinal(double[] pesosAtividades, double[] notasAtividades) {
-    double somaNotas = 0;
-
-    for (int i = 0; i < pesosAtividades.length; i++) {
-      somaNotas += (notasAtividades[i] * (pesosAtividades[i] / 100));
-    }
-
-    return somaNotas;
   }
 }
